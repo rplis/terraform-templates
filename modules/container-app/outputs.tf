@@ -1,0 +1,1 @@
+output "fqdn" { value = try(azurerm_container_app.app.latest_revision_fqdn, null) }

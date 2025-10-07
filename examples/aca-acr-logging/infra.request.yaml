@@ -1,0 +1,14 @@
+project: "your-app"
+env: "dev"
+location: "westeurope"
+owner: "rafal"
+name_prefix: "yourapp-dev"
+stacks:
+- type: "logging" # RG + Log Analytics
+- type: "acr" # Azure Container Registry
+- type: "aca" # Azure Container Apps
+app_name: "api"
+image: "nginx:latest"
+port: 8080
+env_vars:
+ASPNETCORE_URLS: "http://0.0.0.0:8080"
