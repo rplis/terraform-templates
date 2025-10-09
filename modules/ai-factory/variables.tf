@@ -4,7 +4,7 @@ variable "rg_name" {
 variable "location" {
   type = string
 }
-variable "name_prefix" {
+variable "account_name" {
   type = string
 }
 variable "tags" {
@@ -12,36 +12,49 @@ variable "tags" {
   default = {}
 }
 
-// Hub-specific inputs
-variable "hub_friendly_name" {
-  type        = string
-  default     = null
+// Cognitive Services account inputs
+variable "sku_name" {
+  type    = string
+  default = "S0"
 }
 
-variable "hub_description" {
-  type        = string
-  default     = null
+variable "public_network_access" {
+  type    = string
+  default = "Enabled" // Allowed: Enabled, Disabled
 }
 
-variable "hub_public_network_access" {
-  type        = string
-  default     = "Enabled" // Allowed: Enabled, Disabled
-}
-
-// Optional CMK key identifier (Key Vault key URI)
-variable "hub_cmk_key_id" {
-  type        = string
-  default     = null
-}
-
-// Default project configuration
-variable "default_project_name" {
-  type = string
-}
-
-variable "project_description" {
+variable "custom_subdomain_name" {
   type    = string
   default = null
+}
+
+// Optional network ACLs
+variable "enable_network_acls" {
+  type    = bool
+  default = false
+}
+
+variable "network_acls_default_action" {
+  type    = string
+  default = "Allow" // Allowed: Allow, Deny
+}
+
+variable "virtual_network_rules" {
+  // list of objects with id and ignoreMissingVnetServiceEndpoint
+  type = list(object({
+    id                                        = string
+    ignoreMissingVnetServiceEndpoint          = optional(bool)
+  }))
+  default = []
+}
+
+variable "ip_rules" {
+  // list of objects with value and action
+  type = list(object({
+    value  = string
+    action = optional(string)
+  }))
+  default = []
 }
 
 

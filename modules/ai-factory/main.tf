@@ -17,38 +17,26 @@ data "azurerm_resource_group" "rg" {
   name = var.rg_name
 }
 
-# Azure AI Foundry Hub implemented via Machine Learning workspace with kind = "hub"
-resource "azapi_resource" "ai_hub" {
-  type      = "Microsoft.MachineLearningServices/workspaces@2024-04-01"
-  name      = "${var.name_prefix}-aihub"
+# Azure AI Foundry Cognitive Services account (kind = "AIServices")
+resource "azapi_resource" "ai_foundry_account" {
+  type      = "Microsoft.CognitiveServices/accounts@2023-05-01"
+  name      = var.account_name
   location  = var.location
   parent_id = data.azurerm_resource_group.rg.id
 
   body = jsonencode({
-    properties = {
-      friendlyName = var.hub_friendly_name
-      description  = var.hub_description
-      publicNetworkAccess = var.hub_public_network_access
-      encryption = var.hub_cmk_key_id == null ? null : {
-        keyVaultProperties = {
-          keyIdentifier = var.hub_cmk_key_id
-        }
-      }
+    sku = {
+      name = var.sku_name
     }
-    kind = "hub"
-    tags = var.tags
-  })
-}
-
-# Default Project under the Hub
-resource "azapi_resource" "ai_project" {
-  type      = "Microsoft.MachineLearningServices/workspaces/projects@2024-04-01"
-  name      = var.default_project_name
-  parent_id = azapi_resource.ai_hub.id
-
-  body = jsonencode({
+    kind = "AIServices"
     properties = {
-      description = var.project_description
+      publicNetworkAccess = var.public_network_access
+      customSubDomainName = var.custom_subdomain_name
+      networkAcls = var.enable_network_acls ? {
+        defaultAction = var.network_acls_default_action
+        virtualNetworkRules = var.virtual_network_rules
+        ipRules = var.ip_rules
+      } : null
     }
     tags = var.tags
   })
