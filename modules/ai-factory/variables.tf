@@ -1,7 +1,16 @@
-variable "rg_name"     { type = string }
-variable "location"    { type = string }
-variable "name_prefix" { type = string }
-variable "tags"        { type = map(string) default = {} }
+variable "rg_name" {
+  type = string
+}
+variable "location" {
+  type = string
+}
+variable "name_prefix" {
+  type = string
+}
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
 
 // Hub-specific inputs
 variable "hub_friendly_name" {
