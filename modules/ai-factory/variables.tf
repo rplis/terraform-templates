@@ -3,12 +3,8 @@ variable "rg_name" {
 }
 variable "location" {
   type = string
-  validation {
-    condition     = lower(var.location) == "westeurope"
-    error_message = "This module requires location to be set to 'westeurope' (Western Europe)."
-  }
 }
-variable "account_name" {
+variable "name_prefix" {
   type = string
 }
 variable "tags" {
@@ -16,49 +12,49 @@ variable "tags" {
   default = {}
 }
 
-// Cognitive Services account inputs
-variable "sku_name" {
-  type    = string
-  default = "S0"
+// Hub-specific inputs
+variable "hub_friendly_name" {
+  type        = string
+  default     = null
 }
 
-variable "public_network_access" {
-  type    = string
-  default = "Enabled" // Allowed: Enabled, Disabled
+variable "hub_description" {
+  type        = string
+  default     = null
 }
 
-variable "custom_subdomain_name" {
+variable "hub_public_network_access" {
+  type        = string
+  default     = "Enabled" // Allowed: Enabled, Disabled
+}
+
+// Optional CMK key identifier (Key Vault key URI)
+variable "hub_cmk_key_id" {
+  type        = string
+  default     = null
+}
+
+// Default project configuration
+variable "default_project_name" {
+  type = string
+}
+
+variable "project_description" {
   type    = string
   default = null
 }
 
-// Optional network ACLs
-variable "enable_network_acls" {
-  type    = bool
-  default = false
+# Managed Identity configuration for the hub
+variable "identity_type" {
+  description = "Managed identity type for the AI hub: SystemAssigned or UserAssigned"
+  type        = string
+  default     = "SystemAssigned"
 }
 
-variable "network_acls_default_action" {
-  type    = string
-  default = "Allow" // Allowed: Allow, Deny
-}
-
-variable "virtual_network_rules" {
-  // list of objects with id and ignoreMissingVnetServiceEndpoint
-  type = list(object({
-    id                                        = string
-    ignoreMissingVnetServiceEndpoint          = optional(bool)
-  }))
-  default = []
-}
-
-variable "ip_rules" {
-  // list of objects with value and action
-  type = list(object({
-    value  = string
-    action = optional(string)
-  }))
-  default = []
+variable "identity_ids" {
+  description = "List of user-assigned identity resource IDs (required if identity_type is UserAssigned)"
+  type        = list(string)
+  default     = []
 }
 
 
