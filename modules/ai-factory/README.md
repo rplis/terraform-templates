@@ -5,7 +5,7 @@ Moduł tworzy konto Azure AI Foundry jako zasób Cognitive Services (`Microsoft.
 | Nazwa | Typ | Domyślna | Opis |
 |------|-----|----------|------|
 | rg_name | string | – | Grupa zasobów |
-| location | string | – | Region Azure |
+| location | string | – | Region Azure (wymagane: `westeurope`) |
 | account_name | string | – | Nazwa konta AI Foundry |
 | tags | map(string) | {} | Tagi |
 | sku_name | string | "S0" | SKU konta |
@@ -34,4 +34,6 @@ module "ai-factory" {
 ```
 
 Uwaga: Usługa może generować koszty zależnie od użytych zasobów/modeli.
+
+> Wymaganie regionalne: Ze względu na dostępność usług (AI Factual niedostępne w Central Europe), moduł wymusza region `westeurope` (Western Europe).
 

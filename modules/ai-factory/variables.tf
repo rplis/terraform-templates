@@ -3,6 +3,10 @@ variable "rg_name" {
 }
 variable "location" {
   type = string
+  validation {
+    condition     = lower(var.location) == "westeurope"
+    error_message = "This module requires location to be set to 'westeurope' (Western Europe)."
+  }
 }
 variable "account_name" {
   type = string
