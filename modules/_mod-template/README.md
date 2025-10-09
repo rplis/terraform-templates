@@ -18,7 +18,7 @@ Krótki opis celu modułu.
 ## Przykład
 ```hcl
 module "<mod-name>" {
-  source      = "git::https://github.com/<org>/azure-tf-catalog//modules/<mod-name>?ref=v0.1.0"
+  source      = "git::https://github.com/<org>/azure-tf-catalog//modules/<mod-name>"
   rg_name     = var.rg_name
   location    = var.location
   name_prefix = var.name_prefix

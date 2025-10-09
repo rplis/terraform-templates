@@ -3,8 +3,8 @@
 Katalog modułów Terraform dla Azure używany przez ludzi i asystenta AI.
 
 ## Założenia
-- Brak zdalnego state. Moduły są małe, wersjonowane po tagach `vX.Y.Z`.
-- Projekty konsumują moduły przez `source = "git::https://github.com/<org>/azure-tf-catalog//modules/<mod>?ref=vX.Y.Z"`.
+- Brak zdalnego state. Moduły są małe.
+- Projekty konsumują moduły przez `source = "git::https://github.com/<org>/azure-tf-catalog//modules/<mod>"` (bez tagów, zawsze najnowsze).
 - Wymuszone tagi zasobów: `project`, `env`, `owner`, `generated-by`.
 - Sekrety nie trafiają do kodu. Jeśli konieczne, używamy Key Vault.
 
@@ -24,7 +24,7 @@ Katalog modułów Terraform dla Azure używany przez ludzi i asystenta AI.
 5. Uruchom `terraform -chdir=infra init && terraform -chdir=infra plan -var-file=infra/envs/<env>.tfvars`.
 
 ## Dobre praktyki
-- Zawsze pinuj wersję providerów i modułów.
+- Providerów i modułów nie pinujemy — korzystamy z najnowszych.
 - Komituj `.terraform.lock.hcl` w repo aplikacji.
 - Używaj `tflint`, `checkov/tfsec` i `terraform validate` w CI.
 - Nie przechowuj sekretów w `tfvars`. Zawsze przez Key Vault.

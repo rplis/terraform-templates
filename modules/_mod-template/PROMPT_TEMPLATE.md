@@ -50,7 +50,7 @@ Wytyczne szczegółowe do zawartości:
   - Krótki opis.
   - Tabela Wejścia: nazwa, typ, domyślna, opis.
   - Tabela Wyjścia: nazwa, opis.
-  - Przykład użycia z pinowaniem źródła: `source = "git::https://github.com/<org>/azure-tf-catalog//modules/<MODULE_SLUG>?ref=vX.Y.Z"`.
+  - Przykład użycia bez tagów: `source = "git::https://github.com/<org>/azure-tf-catalog//modules/<MODULE_SLUG>"`.
   - Notatka o kosztach jeśli dotyczy.
 
 - example:
@@ -61,7 +61,7 @@ Wytyczne szczegółowe do zawartości:
   - Sekcje: Summary, Changes, Module interface (Inputs/Outputs), Backward compatibility, Test plan (fmt, validate, tflint, checkov, plan), Cost note, Tagging (komendy git tag i push), Checklist.
 
 - prompt-template.patch.md:
-  - Krótki blok do wklejenia do głównego `prompt-template.md`, który dodaje w sekcji „Dozwolone moduły i wersje” pozycję: `- <MODULE_SLUG> @ vX.Y.Z`.
+  - Krótki blok do wklejenia do głównego `prompt-template.md`, który dodaje w sekcji „Dozwolone moduły” pozycję: `- <MODULE_SLUG>`.
 
 Format odpowiedzi:
 - Dla każdego pliku wypisz nagłówek ścieżki w postaci komentarza Markdown, np. `# modules/<MODULE_SLUG>/main.tf`, a pod nim blok kodu z zawartością.
