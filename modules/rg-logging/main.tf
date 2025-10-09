@@ -30,6 +30,10 @@ target_resource_id = azurerm_resource_group.rg.id
 log_analytics_workspace_id = azurerm_log_analytics_workspace.law.id
 
 
-enabled_log { category = "Administrative" }
-metric { category = "AllMetrics" enabled = true }
+enabled_log {
+category = "Administrative"
+}
+enabled_metric {
+category = "AllMetrics"
+}
 }
