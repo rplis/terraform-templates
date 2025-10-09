@@ -3,6 +3,7 @@ env: "dev"
 location: "westeurope"
 owner: "rafal"
 name_prefix: "yourapp-dev"
+rg_name: "yourapp-dev-rg"
 stacks:
 - type: "logging" # RG + Log Analytics
 - type: "acr" # Azure Container Registry
