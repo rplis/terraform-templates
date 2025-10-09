@@ -3,16 +3,6 @@
 
 Generuj **wyłącznie** Terraform używając poniższych modułów z tego repozytorium. Nie twórz surowych zasobów `azurerm_*`.
 
-
-Dozwolone moduły i wersje:
-- rg-logging @ v0.1.0
-- acr @ v0.1.0
-- container-app-env @ v0.1.0
-- container-app @ v0.1.0
-- vnet @ v0.1.0
-- key-vault @ v0.1.0
-
-
 Zasady:
 - Każdy `module` musi mieć `source = "git::https://github.com/<org>/azure-tf-catalog//modules/<mod>?ref=vX.Y.Z"`.
 - Dodaj tagi: `project`, `env`, `owner`, `generated-by = "ai"`.
