@@ -13,7 +13,7 @@ variable "sku" {
 }
 variable "admin_enabled" {
  type    = bool
- default = false
+ default = true
 }
 variable "tags" {
  type    = map(string)

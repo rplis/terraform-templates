@@ -10,5 +10,5 @@ stacks:
 - type: "aca" # Azure Container Apps
 app_name: "api"
 image: "nginx:latest"
-port: 80
+target_port: 80
 env_vars: {}
