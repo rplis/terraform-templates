@@ -1,10 +1,8 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
-    }
-    azapi = {
-      source = "azure/azapi"
+      source  = "azurerm"
+      version = "4.40.0"
     }
   }
 }
@@ -13,52 +11,27 @@ provider "azurerm" {
   features {}
 }
 
-data "azurerm_resource_group" "rg" {
-  name = var.rg_name
-}
+resource "azurerm_ai_services" "ai_service" {
+  custom_subdomain_name              = var.custom_subdomain_name
+  fqdns                              = var.fqdns
+  local_authentication_enabled       = var.local_authentication_enabled
+  location                           = var.location
+  name                               = var.name
+  outbound_network_access_restricted = var.outbound_network_access_restricted
+  public_network_access              = var.public_network_access
+  resource_group_name                = var.rg_name
+  sku_name                           = var.sku_name
+  tags                               = var.tags
 
-# Azure AI Foundry Hub implemented via Machine Learning workspace with kind = "hub"
-resource "azapi_resource" "ai_hub" {
-  type      = "Microsoft.MachineLearningServices/workspaces@2024-04-01"
-  name      = "${var.name_prefix}-aihub"
-  location  = var.location
-  parent_id = data.azurerm_resource_group.rg.id
-  schema_validation_enabled = false
-
-  # Identity: parameterized (SystemAssigned by default; UserAssigned supported)
   identity {
+    identity_ids = var.identity_type == "UserAssigned" ? var.identity_ids : []
     type         = var.identity_type
-    identity_ids = var.identity_type == "UserAssigned" ? var.identity_ids : null
   }
 
-  body = {
-    properties = {
-      friendlyName        = var.hub_friendly_name
-      description        = var.hub_description
-      publicNetworkAccess = var.hub_public_network_access
-      encryption = var.hub_cmk_key_id == null ? null : {
-        keyVaultProperties = {
-          keyIdentifier = var.hub_cmk_key_id
-        }
-      }
-    }
-    kind = "hub"
-    tags = var.tags
-  }
-}
-
-# Default Project under the Hub
-resource "azapi_resource" "ai_project" {
-  type      = "Microsoft.MachineLearningServices/workspaces/projects@2024-04-01"
-  name      = var.default_project_name
-  parent_id = azapi_resource.ai_hub.id
-  schema_validation_enabled = false
-
-  body = {
-    properties = {
-      description = var.project_description
-    }
-    tags = var.tags
+  network_acls {
+    bypass         = var.network_acls_bypass
+    default_action = var.network_acls_default_action
+    ip_rules       = var.network_acls_ip_rules
   }
 }
 
