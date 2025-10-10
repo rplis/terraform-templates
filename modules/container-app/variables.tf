@@ -39,7 +39,6 @@ variable "ingress" {
     transport                       = optional(string, "auto")
     allow_insecure_connections      = optional(bool, false)
     client_certificate_mode         = optional(string, "ignore")
-    exposed_port                    = optional(number, 0)
     traffic_weight_label            = optional(string, "")
     traffic_weight_revision_suffix  = optional(string, "")
   })
@@ -77,7 +76,7 @@ variable "max_inactive_revisions" {
 
 variable "workload_profile_name" {
   type        = string
-  default     = ""
+  default     = null
   description = "Workload profile name"
 }
 

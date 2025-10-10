@@ -3,7 +3,9 @@ variable "rg_name" {
 }
 
 variable "location" {
-  type = string
+  type        = string
+  default     = "westeurope"
+  description = "Azure region where the AI service will be deployed"
 }
 
 variable "name" {

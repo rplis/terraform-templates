@@ -36,12 +36,11 @@ resource "azurerm_container_app" "app" {
   resource_group_name           = var.rg_name
   revision_mode                 = "Single"
   tags                          = var.tags
-  workload_profile_name         = var.workload_profile_name != "" ? var.workload_profile_name : null
+  workload_profile_name         = var.workload_profile_name
 
   ingress {
     allow_insecure_connections = var.ingress.allow_insecure_connections
     client_certificate_mode    = var.ingress.client_certificate_mode
-    exposed_port               = var.ingress.exposed_port
     external_enabled           = var.ingress.external
     target_port                = var.ingress.target_port
     transport                  = var.ingress.transport
