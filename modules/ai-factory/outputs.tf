@@ -1,22 +1,22 @@
-output "ai_service_id" {
-  value = azurerm_ai_services.ai_service.id
+output "cognitive_account_id" {
+  value = azurerm_cognitive_account.ai_foundry.id
 }
 
-output "ai_service_name" {
-  value = azurerm_ai_services.ai_service.name
+output "cognitive_account_name" {
+  value = azurerm_cognitive_account.ai_foundry.name
 }
 
 output "primary_access_key" {
-  value     = azurerm_ai_services.ai_service.primary_access_key
+  value     = azurerm_cognitive_account.ai_foundry.primary_access_key
   sensitive = true
 }
 
 output "secondary_access_key" {
-  value     = azurerm_ai_services.ai_service.secondary_access_key
+  value     = azurerm_cognitive_account.ai_foundry.secondary_access_key
   sensitive = true
 }
 
 output "endpoint" {
-  value = azurerm_ai_services.ai_service.endpoint
+  value = azurerm_cognitive_account.ai_foundry.endpoint
 }
 
