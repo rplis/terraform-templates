@@ -68,11 +68,6 @@ variable "tags" {
   default = {}
 }
 
-variable "custom_domain_verification_id" {
-  type        = string
-  default     = ""
-  description = "Custom domain verification ID"
-}
 
 variable "max_inactive_revisions" {
   type        = number

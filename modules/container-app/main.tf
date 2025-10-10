@@ -31,7 +31,6 @@ principal_id = azurerm_user_assigned_identity.uami[0].principal_id
 
 resource "azurerm_container_app" "app" {
   container_app_environment_id  = var.env_id
-  custom_domain_verification_id = var.custom_domain_verification_id
   max_inactive_revisions        = var.max_inactive_revisions
   name                          = var.name
   resource_group_name           = var.rg_name
