@@ -1,4 +1,4 @@
-# ai-factory
+# ai-foundry
 Moduł tworzy Azure AI Foundry Hub (workspace kind="hub") oraz domyślny Project, z użyciem providera `azapi`.
 
 ## Wejścia
@@ -25,8 +25,8 @@ Moduł tworzy Azure AI Foundry Hub (workspace kind="hub") oraz domyślny Project
 
 ## Przykład
 ```hcl
-module "ai-factory" {
-  source      = "git::https://github.com/<org>/azure-tf-catalog//modules/ai-factory?ref=v0.2.0"
+module "ai-foundry" {
+  source      = "git::https://github.com/<org>/azure-tf-catalog//modules/ai-foudnry?ref=v0.2.0"
   rg_name     = var.rg_name
   location    = var.location
   name_prefix = var.name_prefix
