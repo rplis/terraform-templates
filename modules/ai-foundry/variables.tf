@@ -11,6 +11,11 @@ variable "location" {
 
 variable "name" {
   type        = string
+  description = "Name for the AI services resource name"
+}
+
+variable "name_prefix" {
+  type        = string
   description = "Prefix for the AI services resource name"
 }
 
