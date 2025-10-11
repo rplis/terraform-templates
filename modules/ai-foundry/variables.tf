@@ -21,7 +21,6 @@ variable "environment" {
 
 variable "custom_subdomain_name" {
   type        = string
-  default     = null
   description = "Custom subdomain name for the AI services"
 }
 
@@ -75,7 +74,7 @@ variable "identity_type" {
 
 variable "network_acls_bypass" {
   type        = string
-  default     = "None"
+  default     = ""
   description = "Network ACLs bypass setting"
 }
 

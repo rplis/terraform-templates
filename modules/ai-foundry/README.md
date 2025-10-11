@@ -8,7 +8,11 @@ Moduł tworzy Azure Cognitive Services Account dla AI Foundry.
 | rg_name | string | – | Nazwa grupy zasobów |
 | location | string | "westeurope" | Region Azure |
 | name_prefix | string | – | Prefiks nazw zasobów |
+| custom_subdomain_name | string | – | Nazwa niestandardowej domeny dla usług AI |
 | public_network_access | string | "Enabled" | Dostęp publiczny (Enabled/Disabled) |
+| network_acls_bypass | string | "" | Ustawienie obejścia ACL sieciowych |
+| network_acls_default_action | string | "Allow" | Domyślna akcja ACL sieciowych |
+| network_acls_ip_rules | list(string) | [] | Reguły IP dla ACL sieciowych |
 | tags | map(string) | {} | Tagi do zastosowania na koncie Cognitive Services |
 
 ## Wyjścia
@@ -23,13 +27,17 @@ Moduł tworzy Azure Cognitive Services Account dla AI Foundry.
 ## Przykład
 ```hcl
 module "ai-foundry" {
-  source                = "git::https://github.com/<org>/azure-tf-catalog//modules/ai-foundry?ref=v0.2.0"
-  environment           = var.environment
-  rg_name               = var.rg_name
-  location              = var.location
-  name_prefix           = var.name_prefix
-  public_network_access = "Enabled"
-  tags                  = local.tags
+  source                     = "git::https://github.com/<org>/azure-tf-catalog//modules/ai-foundry?ref=v0.2.0"
+  environment                = var.environment
+  rg_name                    = var.rg_name
+  location                   = var.location
+  name_prefix                = var.name_prefix
+  custom_subdomain_name      = var.custom_subdomain_name
+  public_network_access      = "Enabled"
+  network_acls_bypass        = ""
+  network_acls_default_action = "Allow"
+  network_acls_ip_rules      = []
+  tags                       = local.tags
 }
 ```
 
