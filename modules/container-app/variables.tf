@@ -39,8 +39,8 @@ variable "ingress" {
     transport                       = optional(string, "auto")
     allow_insecure_connections      = optional(bool, false)
     client_certificate_mode         = optional(string, "ignore")
-    traffic_weight_label            = optional(string, "")
-    traffic_weight_revision_suffix  = optional(string, "")
+    traffic_weight_label            = optional(string, "default")
+    traffic_weight_revision_suffix  = optional(string, "latest")
   })
 }
 variable "env_vars" {
