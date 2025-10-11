@@ -7,7 +7,7 @@ Moduł tworzy Azure Cognitive Services Account dla AI Foundry.
 | environment | string | – | Nazwa środowiska (np. dev, staging, prod) |
 | rg_name | string | – | Nazwa grupy zasobów |
 | location | string | "westeurope" | Region Azure |
-| name_prefix | string | – | Prefiks nazw zasobów |
+| name | string | – | Prefiks nazw zasobów |
 | custom_subdomain_name | string | – | Nazwa niestandardowej domeny dla usług AI |
 | public_network_access | string | "Enabled" | Dostęp publiczny (Enabled/Disabled) |
 | network_acls_bypass | string | "" | Ustawienie obejścia ACL sieciowych |
@@ -31,7 +31,7 @@ module "ai-foundry" {
   environment                = var.environment
   rg_name                    = var.rg_name
   location                   = var.location
-  name_prefix                = var.name_prefix
+  name                       = var.name
   custom_subdomain_name      = var.custom_subdomain_name
   public_network_access      = "Enabled"
   network_acls_bypass        = ""

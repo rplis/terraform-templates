@@ -9,7 +9,7 @@ variable "location" {
   description = "Azure region where the AI services will be deployed"
 }
 
-variable "name_prefix" {
+variable "name" {
   type        = string
   description = "Prefix for the AI services resource name"
 }

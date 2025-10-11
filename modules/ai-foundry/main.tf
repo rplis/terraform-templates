@@ -14,7 +14,7 @@ resource "azurerm_ai_services" "ai_foundry" {
   fqdns                              = var.fqdns
   local_authentication_enabled       = var.local_authentication_enabled
   location                           = var.location
-  name                               = "${var.name_prefix}-${var.environment}"
+  name                               = "${var.name}-${var.environment}"
   outbound_network_access_restricted = var.outbound_network_access_restricted
   public_network_access              = var.public_network_access
   resource_group_name                = var.rg_name
