@@ -4,9 +4,6 @@ variable "rg_name" {
 variable "location" {
  type = string
 }
-variable "name_prefix" {
- type = string
-}
 variable "env_id" {
  type = string
 }
