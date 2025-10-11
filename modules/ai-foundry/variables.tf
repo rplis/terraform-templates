@@ -15,3 +15,16 @@ variable "location" {
 }
 
 
+variable "public_network_access" {
+  type        = string
+  default     = "Enabled"
+  description = "Public network access (Enabled/Disabled)"
+}
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags to apply to the cognitive account"
+}
+
+
