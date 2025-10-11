@@ -8,15 +8,29 @@ terraform {
 }
 
 
-# Azure AI Foundry (Cognitive Services Account)
-resource "azurerm_cognitive_account" "ai_foundry" {
-  name                = "ai-${var.name_prefix}-${var.environment}"
-  location            = var.location
-  resource_group_name = var.rg_name
-  kind                = "CognitiveServices"
-  sku_name            = "S0"
-  public_network_access_enabled = var.public_network_access == "Enabled"
-  tags                = var.tags
+# Azure AI Services
+resource "azurerm_ai_services" "ai_foundry" {
+  custom_subdomain_name              = var.custom_subdomain_name
+  fqdns                              = var.fqdns
+  local_authentication_enabled       = var.local_authentication_enabled
+  location                           = var.location
+  name                               = var.name
+  outbound_network_access_restricted = var.outbound_network_access_restricted
+  public_network_access              = var.public_network_access
+  resource_group_name                = var.rg_name
+  sku_name                           = var.sku_name
+  tags                               = var.tags
+
+  identity {
+    identity_ids = var.identity_ids
+    type         = var.identity_type
+  }
+
+  network_acls {
+    bypass         = var.network_acls_bypass
+    default_action = var.network_acls_default_action
+    ip_rules       = var.network_acls_ip_rules
+  }
 }
 
 
