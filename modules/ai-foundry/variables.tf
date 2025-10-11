@@ -9,9 +9,14 @@ variable "location" {
   description = "Azure region where the AI services will be deployed"
 }
 
-variable "name" {
+variable "name_prefix" {
   type        = string
-  description = "Name of the AI services resource"
+  description = "Prefix for the AI services resource name"
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment name (e.g., dev, staging, prod)"
 }
 
 variable "custom_subdomain_name" {
