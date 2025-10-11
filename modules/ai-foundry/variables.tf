@@ -3,7 +3,7 @@ variable "environment" {
   description = "Environment name (e.g., dev, staging, prod)"
 }
 
-variable "resource_group_name" {
+variable "rg_name" {
   type        = string
   description = "Name of the resource group"
 }
