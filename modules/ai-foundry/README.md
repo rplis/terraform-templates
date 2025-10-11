@@ -29,6 +29,7 @@ module "ai-foundry" {
   location              = var.location
   name_prefix           = var.name_prefix
   public_network_access = "Enabled"
+  tags                  = local.tags
 }
 ```
 

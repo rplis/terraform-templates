@@ -14,6 +14,10 @@ variable "location" {
   description = "Azure region where the cognitive account will be deployed"
 }
 
+variable "name_prefix" {
+  type        = string
+  description = "Prefix for naming resources"
+}
 
 variable "public_network_access" {
   type        = string

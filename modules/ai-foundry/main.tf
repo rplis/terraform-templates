@@ -16,6 +16,7 @@ resource "azurerm_cognitive_account" "ai_foundry" {
   kind                = "CognitiveServices"
   sku_name            = "S0"
   public_network_access_enabled = var.public_network_access == "Enabled"
+  tags                = var.tags
 }
 
 
