@@ -10,6 +10,7 @@ terraform {
 
 # Azure AI Services
 resource "azurerm_ai_services" "ai_foundry" {
+  custom_subdomain_name              = var.custom_subdomain_name
   fqdns                              = var.fqdns
   local_authentication_enabled       = var.local_authentication_enabled
   location                           = var.location
