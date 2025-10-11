@@ -33,7 +33,6 @@ resource "azurerm_container_app" "app" {
   resource_group_name           = var.rg_name
   revision_mode                 = "Single"
   tags                          = var.tags
-  workload_profile_name         = var.workload_profile_name != null ? var.workload_profile_name : null
 
   ingress {
     allow_insecure_connections = var.ingress.allow_insecure_connections
