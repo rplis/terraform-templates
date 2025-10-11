@@ -15,16 +15,5 @@ Katalog modułów Terraform dla Azure używany przez ludzi i asystenta AI.
 - `container-app`: Pojedyncza aplikacja ACA, opcjonalna UAMI i dostęp do ACR.
 - `vnet`: Prosta VNet z wybranymi podsieciami (stub).
 - `key-vault`: Key Vault i podstawowe uprawnienia (stub).
+- `ai-foundry`: Azure AI Foundry
 
-## Jak używać z AI
-1. W projekcie przygotuj plik `infra.request.yaml` zgodny z przykładem w `examples/aca-acr-logging/`.
-2. Skopiuj treść `prompt-template.md`, wklej do modelu i podmień listę modułów na konkretne tagi, które chcesz.
-3. Wklej treść `infra.request.yaml` jako wejście.
-4. Oczekuj, że AI zwróci katalog `infra/` (providers.tf, main.tf, variables.tf) oraz `infra/envs/<env>.tfvars`.
-5. Uruchom `terraform -chdir=infra init && terraform -chdir=infra plan -var-file=infra/envs/<env>.tfvars`.
-
-## Dobre praktyki
-- Providerów i modułów nie pinujemy — korzystamy z najnowszych.
-- Komituj `.terraform.lock.hcl` w repo aplikacji.
-- Używaj `tflint`, `checkov/tfsec` i `terraform validate` w CI.
-- Nie przechowuj sekretów w `tfvars`. Zawsze przez Key Vault.
