@@ -30,6 +30,7 @@ resource "azurerm_container_app" "app" {
   container_app_environment_id  = var.env_id
   max_inactive_revisions        = var.max_inactive_revisions
   name                          = var.name
+  name_prefix                   = var.name_prefix
   resource_group_name           = var.rg_name
   revision_mode                 = "Single"
   tags                          = var.tags
