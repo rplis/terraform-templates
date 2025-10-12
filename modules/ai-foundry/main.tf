@@ -9,7 +9,7 @@ terraform {
 
 
 locals {
-  ai_name = "${var.company}-${var.project}-${var.environment}-ai"
+  ai_name = "ai-${var.company}-${var.project}-${var.environment}"
 }
 
 # Azure AI Services

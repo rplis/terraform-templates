@@ -9,7 +9,7 @@ terraform {
 
 
 locals {
-  vnet_name = "${var.company}-${var.project}-${var.environment}-vnet"
+  vnet_name = "vnet-${var.company}-${var.project}-${var.environment}"
 }
 
 resource "azurerm_virtual_network" "vnet" {

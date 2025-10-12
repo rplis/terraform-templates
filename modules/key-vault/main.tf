@@ -9,7 +9,7 @@ terraform {
 
 
 locals {
-  kv_name = replace("${var.company}-${var.project}-${var.environment}-kv", "-", "")
+  kv_name = replace("kv-${var.company}-${var.project}-${var.environment}", "-", "")
 }
 
 resource "azurerm_key_vault" "kv" {

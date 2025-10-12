@@ -10,7 +10,7 @@ terraform {
 
 
 locals {
-  acae_name = "${var.company}-${var.project}-${var.environment}-acae"
+  acae_name = "env-${var.company}-${var.project}-${var.environment}"
 }
 
 resource "azurerm_container_app_environment" "env" {

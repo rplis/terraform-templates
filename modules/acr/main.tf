@@ -9,7 +9,7 @@ terraform {
 
 
 locals {
-  acr_name = replace("${var.company}-${var.project}-${var.environment}-acr", "-", "")
+  acr_name = replace("acr-${var.company}-${var.project}-${var.environment}", "-", "")
 }
 
 resource "azurerm_container_registry" "acr" {

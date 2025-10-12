@@ -10,8 +10,8 @@ terraform {
 
 
 locals {
-  app_name = "${var.company}-${var.project}-${var.environment}-${var.app_name}"
-  uami_name = "${local.app_name}-uami"
+  app_name = "app-${var.company}-${var.project}-${var.environment}-${var.app_name}"
+  uami_name = "uami-${var.company}-${var.project}-${var.environment}-${var.app_name}"
 }
 
 resource "azurerm_user_assigned_identity" "uami" {

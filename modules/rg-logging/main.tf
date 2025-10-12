@@ -16,7 +16,7 @@ tags = var.tags
 
 
 locals {
-  law_name = "${var.company}-${var.project}-${var.environment}-law"
+  law_name = "law-${var.company}-${var.project}-${var.environment}"
 }
 
 resource "azurerm_log_analytics_workspace" "law" {
