@@ -8,13 +8,17 @@ terraform {
 }
 
 
+locals {
+  ai_name = "${var.company}-${var.project}-${var.environment}-ai"
+}
+
 # Azure AI Services
 resource "azurerm_ai_services" "ai_foundry" {
   custom_subdomain_name              = var.custom_subdomain_name
   fqdns                              = var.fqdns
   local_authentication_enabled       = var.local_authentication_enabled
   location                           = var.location
-  name                               = "${var.name}-${var.environment}"
+  name                               = local.ai_name
   outbound_network_access_restricted = var.outbound_network_access_restricted
   public_network_access              = var.public_network_access
   resource_group_name                = var.rg_name

@@ -1,3 +1,18 @@
+variable "company" {
+  type        = string
+  description = "Company name for resource naming"
+}
+
+variable "project" {
+  type        = string
+  description = "Project name for resource naming"
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment name (e.g., dev, staging, prod)"
+}
+
 variable "rg_name" {
   type        = string
   description = "Name of the resource group"
@@ -7,21 +22,6 @@ variable "location" {
   type        = string
   default     = "westeurope"
   description = "Azure region where the AI services will be deployed"
-}
-
-variable "name" {
-  type        = string
-  description = "Name for the AI services resource name"
-}
-
-variable "name_prefix" {
-  type        = string
-  description = "Prefix for the AI services resource name"
-}
-
-variable "environment" {
-  type        = string
-  description = "Environment name (e.g., dev, staging, prod)"
 }
 
 variable "custom_subdomain_name" {

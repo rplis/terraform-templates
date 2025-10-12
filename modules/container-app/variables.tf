@@ -1,14 +1,36 @@
+variable "company" {
+  type        = string
+  description = "Company name for resource naming"
+}
+
+variable "project" {
+  type        = string
+  description = "Project name for resource naming"
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment name (e.g., dev, staging, prod)"
+}
+
 variable "rg_name" {
- type = string
+  type        = string
+  description = "Name of the resource group"
 }
+
 variable "location" {
- type = string
+  type        = string
+  description = "Azure region where resources will be deployed"
 }
+
 variable "env_id" {
- type = string
+  type        = string
+  description = "Container App Environment ID"
 }
-variable "name" {
- type = string
+
+variable "app_name" {
+  type        = string
+  description = "Application name (will be combined with company/project/environment for full name)"
 }
 variable "image" {
  type = string

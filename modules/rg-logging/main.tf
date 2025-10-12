@@ -15,13 +15,17 @@ tags = var.tags
 }
 
 
+locals {
+  law_name = "${var.company}-${var.project}-${var.environment}-law"
+}
+
 resource "azurerm_log_analytics_workspace" "law" {
-name = "${var.name_prefix}-law"
-location = var.location
-resource_group_name = azurerm_resource_group.rg.name
-sku = "PerGB2018"
-retention_in_days = var.log_retention_days
-tags = var.tags
+  name                = local.law_name
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg.name
+  sku                 = "PerGB2018"
+  retention_in_days   = var.log_retention_days
+  tags                = var.tags
 }
 
 

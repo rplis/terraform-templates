@@ -9,12 +9,17 @@ terraform {
 
 
 
+locals {
+  app_name = "${var.company}-${var.project}-${var.environment}-${var.app_name}"
+  uami_name = "${local.app_name}-uami"
+}
+
 resource "azurerm_user_assigned_identity" "uami" {
-count = var.create_uami ? 1 : 0
-name = "${var.name}-uami"
-location = var.location
-resource_group_name = var.rg_name
-tags = var.tags
+  count               = var.create_uami ? 1 : 0
+  name                = local.uami_name
+  location            = var.location
+  resource_group_name = var.rg_name
+  tags                = var.tags
 }
 
 
@@ -29,7 +34,7 @@ principal_id = azurerm_user_assigned_identity.uami[0].principal_id
 resource "azurerm_container_app" "app" {
   container_app_environment_id  = var.env_id
   max_inactive_revisions        = var.max_inactive_revisions
-  name                          = var.name
+  name                          = local.app_name
   resource_group_name           = var.rg_name
   revision_mode                 = "Single"
   tags                          = var.tags
