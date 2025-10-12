@@ -45,7 +45,7 @@ variable "memory_gb" {
 }
 variable "min_replicas" {
  type    = number
- default = 0
+ default = 1
 }
 variable "max_replicas" {
  type    = number
@@ -71,7 +71,7 @@ variable "env_vars" {
 }
 variable "create_uami" {
  type    = bool
- default = true
+ default = false
 }
 variable "acr_login" {
  type    = string

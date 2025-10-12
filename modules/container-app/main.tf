@@ -52,7 +52,7 @@ resource "azurerm_container_app" "app" {
   dynamic "registry" {
     for_each = var.acr_login != null ? [1] : []
     content {
-      identity             = var.create_uami ? azurerm_user_assigned_identity.uami[0].id : "system-environment"
+      identity             = "system-environment"
       password_secret_name = var.registry_password_secret_name
       server               = var.acr_login
       username             = var.registry_username
