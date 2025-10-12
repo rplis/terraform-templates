@@ -23,12 +23,6 @@ resource "azurerm_user_assigned_identity" "uami" {
 }
 
 
-resource "azurerm_role_assignment" "acr_pull" {
-count = var.create_uami && var.acr_id != null ? 1 : 0
-scope = var.acr_id
-role_definition_name = "AcrPull"
-principal_id = azurerm_user_assigned_identity.uami[0].principal_id
-}
 
 
 resource "azurerm_container_app" "app" {
