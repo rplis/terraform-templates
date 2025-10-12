@@ -11,7 +11,7 @@ terraform {
 
 resource "azurerm_user_assigned_identity" "uami" {
 count = var.create_uami ? 1 : 0
-name = "${var.name_prefix}-uami"
+name = "${var.name}-uami"
 location = var.location
 resource_group_name = var.rg_name
 tags = var.tags
